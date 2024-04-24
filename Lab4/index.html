@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="note">
+      <div class="note-title">
+        <h2>Note title</h2>
+      </div>
+      <div class="note-body">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Non vel eos magni ratione exercitationem perferendis
+          amet quod aliquid officia qui molestias, eveniet nulla impedit dicta optio numquam illum enim vitae, ad,
+          voluptatibus aliquam autem. Atque totam esse quasi doloremque quos rem neque voluptatem autem! Sunt
+          reprehenderit temporibus molestiae at repudiandae!
+        </p>
+      </div>
+    </div>
+
+    <div class="create-note-modal">
+      <div class="create-note-modal-header">
+        <h2>Create a new note</h2>
+        <button class="close-modal">X</button>
+      </div>
+      <div class="create-note-modal-body">
+        <input type="text" placeholder="Note title" id="note-title" />
+        <textarea placeholder="Note body" id="note-content"></textarea>
+      </div>
+      <div class="create-note-modal-footer">
+        <button class="create-note">Create note</button>
+      </div>
+    </div>
+    <div class="backdrop hidden"></div>
+    <button id="add-note">Add note</button>
+    <script src="script.js"></script>
+  </body>
+</html>
