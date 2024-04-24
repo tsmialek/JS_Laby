@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Slider</title>
+    </head>
+    <body>
+        <div class="gallery">
+            <div class="card-container">
+                <div class="card card-0" data-btn="0">
+                    <img
+                        class="gallery-img"
+                        src="https://picsum.photos/seed/img1/800/600.jpg"
+                        data-index="1"
+                    />
+                </div>
+                <div class="card card-1" data-btn="1">
+                    <img
+                        class="gallery-img"
+                        src="https://picsum.photos/seed/img2/800/600.jpg"
+                        data-index="1"
+                    />
+                </div>
+                <div class="card card-2" data-btn="2">
+                    <img
+                        class="gallery-img"
+                        src="https://picsum.photos/seed/img3/800/600.jpg"
+                        data-index="1"
+                    />
+                </div>
+                <div class="card card-3" data-btn="3">
+                    <img
+                        class="gallery-img"
+                        src="https://picsum.photos/seed/img4/800/600.jpg"
+                        data-index="1"
+                    />
+                </div>
+                <div class="card card-4" data-btn="4">
+                    <img
+                        class="gallery-img"
+                        src="https://picsum.photos/seed/img5/800/600.jpg"
+                        data-index="1"
+                    />
+                </div>
+            </div>
+            <div class="gallery-choose">
+                <div class="choose-btn btn0" data-card="0"></div>
+                <div class="choose-btn btn1" data-card="1"></div>
+                <div class="choose-btn btn2" data-card="2"></div>
+                <div class="choose-btn btn3" data-card="3"></div>
+                <div class="choose-btn btn4" data-card="4"></div>
+            </div>
+            <button class="btn" id="prev-btn"><</button>
+            <button class="btn" id="next-btn">></button>
+            <div class="disclaimer">
+                lab2 - slider. Tomasz Śmiałek nr indexu 14660
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>
