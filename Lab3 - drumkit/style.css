@@ -26,3 +26,11 @@
   background-color: #4f913a;
   width: 11rem;
 }
+
+.hidden {
+  display: none;
+}
+
+button.active {
+  background-color: red;
+}
