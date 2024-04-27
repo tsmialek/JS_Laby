@@ -80,3 +80,17 @@ document.addEventListener('keydown', (e) => {
     }
   }
 });
+
+document.querySelector('.play-all').addEventListener('click', () => {
+  for (const key in recordings) {
+    recordings[key].forEach((time) => {
+      setTimeout(() => {
+        soundObject[key].currentTime = 0;
+        soundObject[key].play();
+      }, time);
+    });
+  }
+});
+
+// czy na jednym kanale może być nagrywany jeden instrument czy po prostu
+// jeden kanał nagrywa to co aktualnie się dzieje, a kanałów może być kilka
