@@ -1,49 +1,82 @@
 'use strict';
+const recording = {
+  isRecording: false,
+  track: 'a',
+  startTime: Date.now(),
+};
 
 const soundObject = {
   a: document.querySelector('#boom'),
+  s: document.querySelector('#clap'),
+  d: document.querySelector('#hihat'),
 };
 
-const recordBtn = document.querySelector('.record');
-const stopBtn = document.querySelector('.stop');
-const playBtn = document.querySelector('.play');
-const sound = soundObject.a;
-let isRecording = false;
-let startTime;
-const soundArr = [];
-
-const toggleRecording = () => {
-  recordBtn.classList.toggle('hidden');
-  stopBtn.classList.toggle('hidden');
-  isRecording = !isRecording;
-  startTime = Date.now();
-  console.log(`recording: ${isRecording}`);
+const recordings = {
+  a: [],
+  s: [],
+  d: [],
 };
 
-recordBtn.addEventListener('click', () => {
-  soundArr.length = 0;
-  toggleRecording();
-});
+const recordBtns = {
+  a: document.querySelector('.record-boom'),
+  s: document.querySelector('.record-clap'),
+  d: document.querySelector('.record-hihat'),
+};
 
-stopBtn.addEventListener('click', () => {
-  toggleRecording();
-  console.log(`sound array: ${soundArr}`);
-});
+const stopBtns = {
+  a: document.querySelector('.stop-boom'),
+  s: document.querySelector('.stop-clap'),
+  d: document.querySelector('.stop-hihat'),
+};
+
+const playBtns = {
+  a: document.querySelector('.play-boom'),
+  s: document.querySelector('.play-clap'),
+  d: document.querySelector('.play-hihat'),
+};
+
+for (const key in recordBtns) {
+  recordBtns[key].addEventListener('click', () => {
+    recordings[key].length = 0;
+    recording.track = key;
+    recording.startTime = Date.now();
+    toggleRecording(key);
+  });
+}
+
+for (const key in stopBtns) {
+  stopBtns[key].addEventListener('click', () => {
+    toggleRecording(key);
+    console.log(`sound array of ${key}: ${recordings[String(key)]}`);
+  });
+}
+
+for (const key in playBtns) {
+  playBtns[key].addEventListener('click', (e) => {
+    recordings[key].forEach((time) => {
+      setTimeout(() => {
+        soundObject[key].currentTime = 0;
+        soundObject[key].play();
+      }, time);
+    });
+  });
+}
+
+const toggleRecording = (key) => {
+  recordBtns[key].classList.toggle('hidden');
+  stopBtns[key].classList.toggle('hidden');
+
+  recording.isRecording = !recording.isRecording;
+  recording.track = String(key);
+};
 
 document.addEventListener('keydown', (e) => {
-  sound.currentTime = 0;
-  sound.play();
-  if (isRecording) {
-    console.log('recorded sound');
-    soundArr.push(Date.now() - startTime);
+  if (e.key in soundObject) {
+    const sound = soundObject[e.key];
+    sound.currentTime = 0;
+    sound.play();
+    if (recording.isRecording && recording.track === e.key) {
+      recordings[recording.track].push(Date.now() - recording.startTime);
+    }
   }
-});
-
-playBtn.addEventListener('click', () => {
-  soundArr.forEach((delay) => {
-    setTimeout(() => {
-      sound.currentTime = 0;
-      sound.play();
-    }, delay);
-  });
 });
