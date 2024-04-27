@@ -12,7 +12,7 @@
   align-items: center;
 }
 
-.sound-controls button {
+button {
   width: 10rem;
   margin: 5px;
   padding: 10px;
@@ -20,6 +20,9 @@
   background-color: #f7f7f7;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+.play:hover {
+  background-color: aquamarine;
 }
 
 .record:hover {
