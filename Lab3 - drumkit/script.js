@@ -37,6 +37,8 @@ const playBtns = {
 
 for (const key in recordBtns) {
   recordBtns[key].addEventListener('click', () => {
+    recording.isRecording = true;
+    recording.track = String(key);
     recordings[key].length = 0;
     recording.track = key;
     recording.startTime = Date.now();
@@ -47,6 +49,7 @@ for (const key in recordBtns) {
 for (const key in stopBtns) {
   stopBtns[key].addEventListener('click', () => {
     toggleRecording(key);
+    recording.isRecording = false;
     console.log(`sound array of ${key}: ${recordings[String(key)]}`);
   });
 }
@@ -65,9 +68,6 @@ for (const key in playBtns) {
 const toggleRecording = (key) => {
   recordBtns[key].classList.toggle('hidden');
   stopBtns[key].classList.toggle('hidden');
-
-  recording.isRecording = !recording.isRecording;
-  recording.track = String(key);
 };
 
 document.addEventListener('keydown', (e) => {
@@ -90,6 +90,39 @@ document.querySelector('.play-all').addEventListener('click', () => {
       }, time);
     });
   }
+});
+
+const startMetronome = document.querySelector('.start-metronome');
+const stopMetronome = document.querySelector('.stop-metronome');
+const bpmInput = document.querySelector('#bpm');
+const metronomeSound = document.querySelector('#tick');
+let metronomeInterval = null;
+
+startMetronome.addEventListener('click', () => {
+  if (metronomeInterval) return;
+  const bpmValue = parseInt(bpmInput.value, 10);
+  if (isNaN(bpmValue) || bpmValue <= 0) {
+    alert('Please enter a valid BPM value.');
+    return;
+  }
+  const beat = 60000 / bpmValue;
+
+  startMetronome.classList.toggle('hidden');
+  stopMetronome.classList.toggle('hidden');
+
+  metronomeInterval = setInterval(() => {
+    metronomeSound.currentTime = 0;
+    metronomeSound.play();
+  }, beat);
+});
+
+stopMetronome.addEventListener('click', () => {
+  if (!metronomeInterval) return;
+  clearInterval(metronomeInterval);
+  metronomeInterval = null;
+
+  startMetronome.classList.toggle('hidden');
+  stopMetronome.classList.toggle('hidden');
 });
 
 // czy na jednym kanale może być nagrywany jeden instrument czy po prostu
