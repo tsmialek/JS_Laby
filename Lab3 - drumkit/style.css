@@ -22,15 +22,18 @@
   border-radius: 5px;
 }
 
-.sound-controls button:hover {
+.record:hover {
   background-color: #4f913a;
-  width: 11rem;
 }
 
-.hidden {
-  display: none;
+.stop:hover {
+  background-color: #d9534f;
 }
 
 button.active {
   background-color: red;
+}
+
+.hidden {
+  display: none;
 }
