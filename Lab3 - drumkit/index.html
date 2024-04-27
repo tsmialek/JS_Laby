@@ -9,22 +9,25 @@
   <body>
     <div class="drumkit">
       <div class="sound-controls">
-        <audio id="boom" controls data-key="a" src="sounds/boom.wav"></audio>
-        <button id="record-boom" class="record">Record</button>
-        <button id="pause-boom" class="hidden">Record</button>
+        <audio id="boom" controls src="sounds/boom.wav"></audio>
+        <button id="record" class="record record-boom">Record</button>
+        <button class="stop stop-boom hidden">Stop</button>
+        <button class="play play-boom" data-key="a">Play boom</button>
       </div>
       <div class="sound-controls">
         <audio id="clap" controls data-key="s" src="sounds/clap.wav"></audio>
-        <button id="record-clap">Record</button>
-        <button id="pause-clap" class="hidden">Record</button>
+        <button id="record" class="record record-clap">Record</button>
+        <button class="stop stop-clap hidden" data-key="s">Stop</button>
+        <button class="play play-clap" data-key="s">Play clap</button>
       </div>
       <div class="sound-controls">
-        <audio id="hihat" controls data-key="d" src="sounds/hihat.wav"></audio>
-        <button id="record-hihat">Record</button>
-        <button id="pasue-hihat" class="hidden">Record</button>
+        <audio id="hihat" controls src="sounds/hihat.wav"></audio>
+        <button id="record" class="record record-hihat">Record</button>
+        <button class="stop stop-hihat hidden">Stop</button>
+        <button class="play play-hihat" data-key="d">Play hihat</button>
       </div>
+      <button id="play" class="play play-all">Play all</button>
     </div>
-
     <script src="script.js"></script>
   </body>
 </html>

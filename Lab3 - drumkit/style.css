@@ -12,25 +12,33 @@
   align-items: center;
 }
 
-.sound-controls button {
-  width: 10rem;
+button {
+  width: 8rem;
   margin: 5px;
   padding: 10px;
-  font-size: 20px;
+  font-size: 1rem;
   background-color: #f7f7f7;
   border: 1px solid #ccc;
   border-radius: 5px;
+  transition: 0.2s;
+}
+.play:hover {
+  background-color: rgb(85, 168, 232);
 }
 
-.sound-controls button:hover {
+.record:hover {
   background-color: #4f913a;
-  width: 11rem;
+}
+
+.stop:hover {
+  background-color: #d9534f;
+}
+
+.play-all {
+  width: 10rem;
+  font-size: 1.5rem;
 }
 
 .hidden {
   display: none;
-}
-
-button.active {
-  background-color: red;
 }
