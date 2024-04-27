@@ -1,3 +1,10 @@
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
 .drumkit {
   display: flex;
   flex-wrap: wrap;
@@ -26,11 +33,13 @@ button {
   background-color: rgb(85, 168, 232);
 }
 
-.record:hover {
+.record:hover,
+.start-metronome:hover {
   background-color: #4f913a;
 }
 
-.stop:hover {
+.stop:hover,
+.stop-metronome:hover {
   background-color: #d9534f;
 }
 
