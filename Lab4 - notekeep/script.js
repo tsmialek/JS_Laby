@@ -1,27 +1,15 @@
 'use strict';
-class Note {
-  constructor(title, content, created) {
-    this.title = title;
-    this.content = content;
-    this.created = created;
-  }
-}
-
-const notes = [];
-
 const addNoteBtn = document.querySelector('#add-note');
 const createNoteModal = document.querySelector('.create-note-modal');
 const backDrop = document.querySelector('.backdrop');
 const closeModalBtn = document.querySelector('.close-modal');
-
-const title = document.querySelector('#note-title');
-const content = document.querySelector('#note-content');
-
 const createNoteBtn = document.querySelector('.create-note');
 
 addNoteBtn.addEventListener('click', () => {
   createNoteModal.classList.add('active');
   backDrop.classList.remove('hidden');
+  document.querySelector('#note-title').value = '';
+  document.querySelector('#note-content').value = '';
 });
 
 const closeModal = () => {
@@ -29,20 +17,88 @@ const closeModal = () => {
   backDrop.classList.add('hidden');
 };
 
-const clearInputs = () => {
-  title.value = '';
-  content.value = '';
-};
-
 closeModalBtn.addEventListener('click', closeModal);
 
-createNoteBtn.addEventListener('click', () => {
-  const created = new Date().toLocaleString();
+const loadNotes = () => JSON.parse(localStorage.getItem('notes')) || [];
+const saveNotesToLocalStorage = (notes) =>
+  localStorage.setItem('notes', JSON.stringify(notes));
 
-  const note = new Note(title.value, content.value, created);
-  notes.push(note);
+let selectedColor = '#869cf9';
 
-  localStorage.setItem(title.value, JSON.stringify(notes));
-  closeModal();
-  clearInputs();
+const colorPickerElements = document.querySelectorAll('.color-picker .color');
+colorPickerElements.forEach((colorDiv) => {
+  colorDiv.addEventListener('click', function () {
+    selectedColor = this.dataset.color;
+    colorPickerElements.forEach((c) => c.classList.remove('selected'));
+    this.classList.add('selected');
+  });
 });
+
+const addNote = () => {
+  const title = document.querySelector('#note-title').value;
+  const content = document.querySelector('#note-content').value;
+
+  const notes = loadNotes();
+  notes.push({
+    title: title,
+    content: content,
+    created: new Date(),
+    color: selectedColor,
+  });
+  saveNotesToLocalStorage(notes);
+  displayNotes();
+};
+
+createNoteBtn.addEventListener('click', () => {
+  addNote();
+  closeModal();
+});
+
+const displayNotes = (notes = loadNotes()) => {
+  const notesContainer = document.querySelector('.notes-container');
+  notesContainer.innerHTML = '';
+
+  notes.forEach((note, index) => {
+    const noteElement = document.createElement('div');
+    noteElement.classList.add('note');
+    noteElement.innerHTML = `
+    <div class="note-title primary">
+    <h2 style="color: ${note.color}">${note.title}</h2><h6 style="color: ${
+      note.color
+    }">${new Date(note.created).toLocaleString()}</h6>
+    </div>
+    <div class="note-body">
+    <p>${note.content}</p>
+    </div>
+    
+    `;
+    notesContainer.appendChild(noteElement);
+  });
+};
+
+console.log(loadNotes());
+displayNotes();
+
+document
+  .querySelector('#note-filter')
+  .addEventListener('input', (e) => filterNotes(e.target.value));
+
+const filterNotes = (searchPhrase) => {
+  if (!searchPhrase) {
+    displayNotes();
+    return;
+  }
+
+  const notes = loadNotes();
+  const filteredNotes = notes.filter(
+    (note) =>
+      note.title.toLowerCase().includes(searchPhrase.toLowerCase()) ||
+      note.content.toLowerCase().includes(searchPhrase.toLowerCase())
+  );
+
+  displayNotes(filteredNotes);
+};
+
+// ToDo:
+// 1. dodać możliwość tagowania notatek i filtrowania po tagach
+// 2. dodać możliwość przypinania notatek do góry
