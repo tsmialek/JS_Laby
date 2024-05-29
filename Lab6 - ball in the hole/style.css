@@ -1,0 +1,107 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
+
+:root {
+  --text: #e2fef4;
+  --background: #01271c;
+  --primary: #75fdcf;
+  --secondary: #970367;
+  --accent: #fb3109;
+  --hole: #000;
+}
+
+body {
+  font-family: 'Poppins';
+  font-weight: 400;
+  color: var(--text);
+
+  background-color: var(--background);
+  height: 100vh;
+  margin: 0;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+p {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Poppins';
+  font-weight: 700;
+}
+
+html {
+  font-size: 100%;
+} /* 16px */
+
+h1 {
+  font-size: 4.21rem; /* 67.36px */
+}
+
+h2 {
+  font-size: 3.158rem; /* 50.56px */
+}
+
+h3 {
+  font-size: 2.369rem; /* 37.92px */
+}
+
+h4 {
+  font-size: 1.777rem; /* 28.48px */
+}
+
+h5 {
+  font-size: 1.333rem; /* 21.28px */
+}
+
+small {
+  font-size: 0.75rem; /* 12px */
+}
+.timer {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  font-size: 1.5rem;
+}
+
+.controls * {
+  margin-bottom: 0.75rem;
+}
+
+.ball {
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary);
+  border-radius: 50%;
+  position: absolute;
+}
+
+.mainHole {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: var(--hole);
+
+  position: absolute;
+}
+
+.gameArea {
+  height: 80%;
+  width: 90%;
+
+  border: 5px solid var(--secondary);
+  border-radius: 1rem;
+  position: relative;
+}
