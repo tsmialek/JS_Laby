@@ -10,23 +10,15 @@
     <div class="drumkit">
       <div class="sound-controls">
         <audio id="boom" controls src="sounds/boom.wav"></audio>
-        <button id="record" class="record record-boom">Record</button>
-        <button class="stop stop-boom hidden">Stop</button>
-        <button class="play play-boom" data-key="a">Play boom</button>
       </div>
       <div class="sound-controls">
         <audio id="clap" controls data-key="s" src="sounds/clap.wav"></audio>
-        <button id="record" class="record record-clap">Record</button>
-        <button class="stop stop-clap hidden" data-key="s">Stop</button>
-        <button class="play play-clap" data-key="s">Play clap</button>
       </div>
       <div class="sound-controls">
         <audio id="hihat" controls src="sounds/hihat.wav"></audio>
-        <button id="record" class="record record-hihat">Record</button>
-        <button class="stop stop-hihat hidden">Stop</button>
-        <button class="play play-hihat" data-key="d">Play hihat</button>
       </div>
     </div>
+
     <div class="metronome-controls">
       <label for="bpm">BPM:</label>
       <input id="bpm" type="number" />
@@ -34,7 +26,27 @@
       <button class="stop-metronome hidden">Stop Metronome</button>
       <audio id="tick" class="hidden" src="sounds/tink.wav"></audio>
     </div>
-    <button id="play" class="play play-all">Play all</button>
+
+    <ul class="audio-tracks">
+      <li>
+        <input type="checkbox" name="track" id="track_1" />
+        <div class="track-bar">Track 1</div>
+      </li>
+      <li>
+        <input type="checkbox" name="track" id="track_1" />
+        <div class="track-bar">Track 1</div>
+      </li>
+      <li>
+        <input type="checkbox" name="track" id="track_1" />
+        <div class="track-bar">Track 1</div>
+      </li>
+    </ul>
+
+    <div class="button-container">
+      <button class="play play-selected">Play selected</button>
+      <button class="play play-all">Play all</button>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

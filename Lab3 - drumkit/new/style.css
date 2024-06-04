@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind:wght@300;400;500;600;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+  /* colors */
+  --text: #d1d7fd;
+  --background: #020623;
+  --primary: #869cf9;
+  --secondary: #a809a9;
+  --accent: #f538a3;
+
+  /* font */
+  --heading: 'Montserrat', sans-serif;
+  --body: 'Hind', sans-serif;
+}
+
+body {
+  font-family: var(--body);
+
+  background-color: var(--background);
+  height: 100vh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading);
+  text-transform: uppercase;
+  color: var(--primary);
+}
+
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.app-title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 2rem 0;
+
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.app-container {
+  width: min(90%, 1200px);
+  outline: 1px solid var(--primary);
+  margin-inline: auto;
+}
+
+.drumkit {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr auto;
+}
+
+.drumkit > * {
+  padding: 1rem;
+}
+
+.sounds {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.sounds > * {
+  margin-bottom: 0.75em;
+}
+
+.controls {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+
+.tracks {
+  grid-column: 1 / 3;
+  grid-row: 2 / 2;
+}

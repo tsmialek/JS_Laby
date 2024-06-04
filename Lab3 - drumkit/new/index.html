@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Drumkit</title>
+  </head>
+  <body>
+    <div class="app-container flex-column">
+      <header><h2 class="app-title">Drumkit</h2></header>
+      <div class="drumkit">
+        <div class="sounds">
+          <h1>Sounds:</h1>
+          <h2>Boom</h2>
+          <audio id="boom" controls src="../sounds/boom.wav"></audio>
+          <h2>Clap</h2>
+          <audio id="clap" controls src="../sounds/clap.wav"></audio>
+          <h2>Hihat</h2>
+          <audio id="hihat" controls src="../sounds/hihat.wav"></audio>
+        </div>
+        <div class="controls">
+          <h1>Controls:</h1>
+          <div class="control-buttons"></div>
+          <div class="metronome"></div>
+        </div>
+        <div class="tracks">
+          <h1>Tracks:</h1>
+        </div>
+      </div>
+      <footer></footer>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
