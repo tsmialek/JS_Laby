@@ -17,6 +17,8 @@ const mouse = {
   x: null,
   y: null,
   radius: (canvas.height / 60) * (canvas.width / 60),
+  repel: false,
+  force: 1,
 };
 
 window.addEventListener('mousemove', (e) => {
@@ -59,7 +61,14 @@ class Particle {
     let distance = Math.sqrt(dx * dx + dy * dy);
     if (distance < mouse.radius + this.size) {
       // ToDo:
-      // checking which side of the mouse the particle is
+      // repel or attract particles to mouse
+      if (mouse.repel) {
+        this.x -= (dx / distance) * mouse.force;
+        this.y -= (dy / distance) * mouse.force;
+      } else {
+        this.x += (dx / distance) * mouse.force;
+        this.y += (dy / distance) * mouse.force;
+      }
     }
 
     this.x += this.directionX;
@@ -92,20 +101,24 @@ const animate = () => {
   for (let i = 0; i < particlesArr.length; i++) {
     particlesArr[i].update();
   }
-  connect(100, TEXT, 0.01);
+  connect(100, TEXT, 1);
 };
 
 const connect = (treshold, color, lineWidth) => {
+  let opacity = 1;
   particlesArr.forEach((a) => {
     particlesArr.forEach((b) => {
       let distance = (a.x - b.x) * (a.x - b.x) + (a.y - b.y) * (a.y - b.y);
 
       if (distance < treshold * treshold) {
-        ctx.strokeStyle = color;
+        opacity = 1 - distance / treshold / treshold;
+        ctx.strokeStyle = `rgba(168, 9, 169, ${opacity})`;
         ctx.lineWidth = lineWidth;
+        ctx.beginPath();
         ctx.moveTo(a.x, a.y);
         ctx.lineTo(b.x, b.y);
         ctx.stroke();
+        ctx.closePath();
       }
     });
   });
@@ -116,6 +129,11 @@ window.addEventListener('resize', () => {
   init(100, TEXT);
 });
 
+window.addEventListener('mouseout', () => {
+  mouse.x = undefined;
+  mouse.y = undefined;
+});
+
 // initialize
-init(80, TEXT, 3);
+init(500, TEXT, 3);
 animate();
