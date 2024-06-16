@@ -1,0 +1,27 @@
+:root {
+  /* colors */
+  --text: #d1d7fd;
+  --background: #020623;
+  --primary: #869cf9;
+  --secondary: #a809a9;
+  --accent: #f538a3;
+
+  /* font */
+  --heading: 'Montserrat', sans-serif;
+  --body: 'Hind', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#animationContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(var(--primary), var(--background));
+}
