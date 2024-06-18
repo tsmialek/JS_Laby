@@ -4,13 +4,39 @@ const canvas = document.querySelector('#animationContainer');
 const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
+let animationId;
+let mouseForce = 1;
+
+let nParticles;
+
+const start = document.querySelector('.btn-start');
+const reset = document.querySelector('.btn-reset');
+
+start.addEventListener('click', (e) => {
+  nParticles = Number(document.querySelector('#nParticles').value);
+  mouse.force = Number(document.querySelector('#force').value);
+  mouse.repel = document.querySelector('#repel').checked;
+  cancelAnimationFrame(animationId);
+  init(nParticles, TEXT, 0);
+  animate();
+});
+
+reset.addEventListener('click', (e) => {
+  nParticles = Number(document.querySelector('#nParticles').value);
+  mouse.force = Number(document.querySelector('#force').value);
+  mouse.repel = document.querySelector('#repel').checked;
+  console.log(mouse.repel);
+  cancelAnimationFrame(animationId);
+  init(nParticles, TEXT, 0);
+  animate();
+});
 
 // colors
 const TEXT = '#d1d7fd';
 const LINE = '#a809a9';
 const BACKGROUND = '#d1d7fd';
 
-let particlesArr;
+let particlesArr = [];
 
 // mouse setup
 const mouse = {
@@ -60,7 +86,6 @@ class Particle {
     let dy = mouse.y - this.y;
     let distance = Math.sqrt(dx * dx + dy * dy);
     if (distance < mouse.radius + this.size) {
-      // ToDo:
       // repel or attract particles to mouse
       if (mouse.repel) {
         this.x -= (dx / distance) * mouse.force;
@@ -82,6 +107,11 @@ class Particle {
 const init = (n, color, speed) => {
   particlesArr = [];
 
+  addParticles(n, color, speed);
+};
+
+// add particles
+const addParticles = (n, color, speed) => {
   for (let i = 0; i < n; i++) {
     let size = Math.random() * 5 + 1;
     let x = Math.random() * (innerWidth - size * 2 - size * 2) + size * 2;
@@ -95,7 +125,7 @@ const init = (n, color, speed) => {
 };
 
 const animate = () => {
-  requestAnimationFrame(animate);
+  animationId = requestAnimationFrame(animate);
   ctx.clearRect(0, 0, innerWidth, innerHeight);
 
   for (let i = 0; i < particlesArr.length; i++) {
@@ -134,6 +164,18 @@ window.addEventListener('mouseout', () => {
   mouse.y = undefined;
 });
 
-// initialize
-init(500, TEXT, 3);
-animate();
+// To be fixed
+// check if particle was clicked
+window.addEventListener('click', (e) => {
+  for (let i = 0; i < particlesArr.length; i++) {
+    let dx = e.x - particlesArr[i].x;
+    let dy = e.y - particlesArr[i].y;
+    let distance = Math.sqrt(dx * dx + dy * dy);
+    if (distance < particlesArr[i].size) {
+      particlesArr.splice(i, 1);
+      addParticles(2, TEXT, 2);
+      console.log('clicked');
+      break;
+    }
+  }
+});

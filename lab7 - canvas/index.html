@@ -7,6 +7,28 @@
     <title>Canvas</title>
   </head>
   <body>
+    <div class="controls">
+      <div class="buttons">
+        <button class="btn btn-start">Start</button>
+        <button class="btn btn-reset">Reset</button>
+      </div>
+      <div class="particles-settings">
+        <h4>Select number of particles:</h4>
+        <input type="number" name="nparticles" id="nParticles" />
+      </div>
+
+      <div class="cursour-settings">
+        <h4>Cursour settings:</h4>
+        <div class="flex-container">
+          <p>select cursour force:</p>
+          <input type="number" name="force" id="force" />
+          <input type="radio" name="mouseAction" id="repel" />
+          <p>Repel particles</p>
+          <input type="radio" name="mouseAction" id="attract" checked />
+          <p>Attract particles</p>
+        </div>
+      </div>
+    </div>
     <canvas id="animationContainer"></canvas>
     <script src="script.js"></script>
   </body>
