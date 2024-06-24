@@ -12,12 +12,13 @@ let nParticles;
 const start = document.querySelector('.btn-start');
 const reset = document.querySelector('.btn-reset');
 
+// move code to separate function
 start.addEventListener('click', (e) => {
   nParticles = Number(document.querySelector('#nParticles').value);
   mouse.force = Number(document.querySelector('#force').value);
   mouse.repel = document.querySelector('#repel').checked;
   cancelAnimationFrame(animationId);
-  init(nParticles, TEXT, 0);
+  init(nParticles, TEXT, 1);
   animate();
 });
 
@@ -27,7 +28,7 @@ reset.addEventListener('click', (e) => {
   mouse.repel = document.querySelector('#repel').checked;
   console.log(mouse.repel);
   cancelAnimationFrame(animationId);
-  init(nParticles, TEXT, 0);
+  init(nParticles, TEXT, 1);
   animate();
 });
 
