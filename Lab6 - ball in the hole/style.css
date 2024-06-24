@@ -1,12 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:700|Poppins:400');
 
+* {
+  box-sizing: border-box;
+}
+
 :root {
-  --text: #e2fef4;
-  --background: #01271c;
-  --primary: #75fdcf;
-  --secondary: #970367;
-  --accent: #fb3109;
-  --hole: #000;
+  /* colors */
+  --text: #d1d7fd;
+  --background: #020623;
+  --primary: #869cf9;
+  --secondary: #a809a9;
+  --accent: #f538a3;
+
+  /* font */
+  --heading: 'Montserrat', sans-serif;
+  --body: 'Hind', sans-serif;
 }
 
 body {
@@ -80,28 +88,25 @@ small {
   margin-bottom: 0.75rem;
 }
 
-.ball {
-  width: 50px;
-  height: 50px;
-  background-color: var(--primary);
-  border-radius: 50%;
-  position: absolute;
-}
-
-.mainHole {
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-  background-color: var(--hole);
-
-  position: absolute;
-}
-
-.gameArea {
+#animationContainer {
+  width: 80%;
   height: 80%;
-  width: 90%;
+  border: 2px solid var(--primary);
+  border-radius: 20px;
+  margin: 1rem;
+}
 
-  border: 5px solid var(--secondary);
-  border-radius: 1rem;
-  position: relative;
+.btn {
+  background-color: var(--primary);
+  color: var(--background);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: var(--accent);
+  cursor: pointer;
 }

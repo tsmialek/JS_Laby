@@ -8,15 +8,17 @@
   </head>
   <body>
     <header>
-      <h2>Ball in the hole</h1>
+      <h4>Ball in the hole</h4>
     </header>
     <section class="controls">
-      <p>Timer: <span class="timer">60</span></p>
-      <button class="reset">Reset</button>
+      <p>
+        Timer:
+        <span class="timer">60</span>
+      </p>
+      <button class="btn reset">Reset</button>
+      <button class="btn start">Start</button>
     </section>
-    <section class="gameArea">
-      <div class="ball"></div>
-      <div class="mainHole"></div>
-    </section>
+    <canvas id="animationContainer"></canvas>
+    <script src="script.js" type="module"></script>
   </body>
 </html>
