@@ -18,6 +18,35 @@ const resetButton = document.querySelector('.reset');
 
 let mainHole;
 
+const scoreSpan = document.querySelector('.score');
+let score = 0;
+
+const timerSpan = document.querySelector('.timer');
+let timer;
+let startTime;
+let remainingTime;
+
+const startTimer = () => {
+  remainingTime = 60;
+  timerSpan.textContent = remainingTime;
+
+  if (timer) {
+    clearInterval(timer);
+  }
+
+  timer = setInterval(() => {
+    remainingTime--;
+    scoreSpan.textContent = score;
+    timerSpan.textContent = remainingTime;
+    if (remainingTime <= 0) {
+      clearInterval(timer);
+      alert(`Time's up! You scored ${score} hits.`);
+      score = 0;
+      scoreSpan.textContent = score;
+    }
+  }, 1000);
+};
+
 const init = () => {
   ball.x = canvas.width / 2;
   ball.y = canvas.height / 2;
@@ -34,8 +63,16 @@ const init = () => {
   mainHole.draw();
 };
 
-startButton.addEventListener('click', init);
-resetButton.addEventListener('click', init);
+startButton.addEventListener('click', () => {
+  timerSpan.textContent = 0;
+  startTimer();
+  init();
+});
+resetButton.addEventListener('click', () => {
+  timerSpan.textContent = 0;
+  startTimer();
+  init();
+});
 
 let animationId;
 let tiltX = 0;
@@ -100,9 +137,9 @@ class Hole {
       ball.y - ball.radius < this.y
     ) {
       console.log('collision detected');
+      score++;
       init();
       animate();
-      alert('You won! Play again?');
     }
   }
 }

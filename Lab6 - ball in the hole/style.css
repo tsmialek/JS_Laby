@@ -71,7 +71,7 @@ h5 {
 small {
   font-size: 0.75rem; /* 12px */
 }
-.timer {
+span {
   color: var(--secondary);
   font-weight: 700;
 }
