@@ -8,6 +8,10 @@ console.log(chooseBtns);
 
 const nextBtn = document.querySelector('#next-btn');
 const prevBtn = document.querySelector('#prev-btn');
+const pauseBtn = document.querySelector('#pause-btn');
+const playBtn = document.querySelector('#play-btn');
+
+let intervalId;
 
 // move cards to the right or left
 const difCard = () => {
@@ -76,9 +80,16 @@ prevBtn.addEventListener('click', () => {
 
 // select button on page load
 updateSelectedButton();
-setInterval(nextCard, 4000);
+intervalId = setInterval(nextCard, 2000);
 
-// toDO:
-// 1. powiększanie i pouzowanie kart
-// 2. wybieranie karty za pomocą przycisku
-// 3. refactor
+pauseBtn.addEventListener('click', () => {
+    pauseBtn.classList.add('none');
+    playBtn.classList.remove('none');
+    clearInterval(intervalId);
+});
+
+playBtn.addEventListener('click', () => {
+    playBtn.classList.add('none');
+    pauseBtn.classList.remove('none');
+    intervalId = setInterval(nextCard, 2000);
+});
