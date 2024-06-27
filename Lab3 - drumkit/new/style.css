@@ -15,9 +15,8 @@
 
 body {
   font-family: var(--body);
-
   background-color: var(--background);
-  height: 100vh;
+  height: 100%;
   color: var(--text);
 }
 
@@ -68,7 +67,7 @@ h6 {
   font-size: 3rem;
   font-weight: 900;
   text-align: center;
-  margin: 2rem 0;
+  margin: 1rem 0;
 
   background: linear-gradient(90deg, var(--primary), var(--secondary));
   -webkit-background-clip: text;
@@ -77,7 +76,6 @@ h6 {
 
 .app-container {
   width: min(90%, 1200px);
-  outline: 1px solid var(--primary);
   margin-inline: auto;
 }
 
@@ -120,9 +118,17 @@ h6 {
 
   border: 2px solid var(--secondary);
   border-radius: 1rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .track > * {
   margin-inline: 0.5rem;
   font-size: 1.25rem;
+}
+
+.hidden {
+  display: none;
 }
