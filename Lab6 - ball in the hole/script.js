@@ -54,22 +54,18 @@ const init = () => {
 
   const radius = 30;
 
-  const holeX =
-    Math.random() * (canvas.width - radius * 2 - radius * 2) + radius * 2;
-  const holeY =
-    Math.random() * (canvas.height - radius * 2 - radius * 2) + radius * 2;
+  const holeX = Math.random() * (canvas.width - radius * 2) + radius * 2;
+  const holeY = Math.random() * (canvas.height - radius * 2) + radius * 2;
 
   mainHole = new Hole(holeX, holeY);
   mainHole.draw();
 };
 
 startButton.addEventListener('click', () => {
-  timerSpan.textContent = 0;
   startTimer();
   init();
 });
 resetButton.addEventListener('click', () => {
-  timerSpan.textContent = 0;
   startTimer();
   init();
 });
@@ -192,4 +188,3 @@ animate();
 // 1. add hole in random spot
 // 2. add collision with hole
 // 3. reset the ball position when it collides with the hole
-// 4. add timer that listen when you start tilting the device

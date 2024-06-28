@@ -1,4 +1,5 @@
 'use strict';
+
 const addNoteBtn = document.querySelector('#add-note');
 const createNoteModal = document.querySelector('.create-note-modal');
 const backDrop = document.querySelector('.backdrop');
@@ -10,6 +11,7 @@ addNoteBtn.addEventListener('click', () => {
   backDrop.classList.remove('hidden');
   document.querySelector('#note-title').value = '';
   document.querySelector('#note-content').value = '';
+  document.querySelector('#note-tags').value = '';
 });
 
 const closeModal = () => {

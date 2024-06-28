@@ -165,7 +165,9 @@ window.addEventListener('mouseout', () => {
   mouse.y = undefined;
 });
 
-// To be fixed
+// FIXME:
+// weird mouse hitbox
+
 // check if particle was clicked
 window.addEventListener('click', (e) => {
   for (let i = 0; i < particlesArr.length; i++) {

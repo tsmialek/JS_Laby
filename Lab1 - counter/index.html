@@ -1,55 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Lab 1</title>
-  </head>
-  <body>
-    <main>
-<<<<<<< HEAD
-      <div class="inputContainer">
-        <p><label for="num1">Pole 1</label></p>
-        <input type="number" name="num1" id="num1" />
-      </div>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="style.css" />
+        <title>Lab 1</title>
+    </head>
+    <body>
+        <main>
+            <div class="input-container">
+                <input type="text" class="input-field" id="input-1" />
+                <input type="text" class="input-field" id="input-1" />
+                <input type="text" class="input-field" id="input-1" />
+            </div>
 
-    </main>
+            <div class="button-div">
+                <button id="add">+</button>
+                <button id="del">-</button>
+            </div>
 
-=======
-      <div class="input-container">
-        <input type="text" class="input-field" id="input-1" />
-        <input type="text" class="input-field" id="input-1" />
-        <input type="text" class="input-field" id="input-1" />
-      </div>
->>>>>>> 944f785aa8c59de88b2798ddd4b98c3435b021e0
+            <div class="result-container">
+                <div class="result">
+                    Sum:
+                    <span id="sum"></span>
+                </div>
+                <div class="result">
+                    Average:
+                    <span id="avg"></span>
+                </div>
+                <div class="result">
+                    Minimum:
+                    <span id="min"></span>
+                </div>
+                <div class="result">
+                    Maximum:
+                    <span id="max"></span>
+                </div>
+            </div>
+            <div class="disclaimer">empty inputs are calculated as "0"</div>
+        </main>
 
-      <div class="button-div">
-        <button id="add">+</button>
-        <button id="del">-</button>
-      </div>
-
-      <div class="result-container">
-        <div class="result">
-          Sum:
-          <span id="sum"></span>
-        </div>
-        <div class="result">
-          Average:
-          <span id="avg"></span>
-        </div>
-        <div class="result">
-          Minimum:
-          <span id="min"></span>
-        </div>
-        <div class="result">
-          Maximum:
-          <span id="max"></span>
-        </div>
-      </div>
-      <div class="disclaimer">empty inputs are calculated as "0"</div>
-    </main>
-
-    <script src="script.js"></script>
-  </body>
+        <script src="script.js"></script>
+    </body>
 </html>
