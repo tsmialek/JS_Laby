@@ -39,7 +39,7 @@ colorPickerElements.forEach((colorDiv) => {
 const addNote = () => {
   const title = document.querySelector('#note-title').value;
   const content = document.querySelector('#note-content').value;
-  const tags = document.querySelector('#note-tags').value.split(' ');
+  const tags = document.querySelector('#note-tags').value;
 
   const notes = loadNotes();
   notes.push({
@@ -84,7 +84,7 @@ const displayNotes = (notes = loadNotes()) => {
     <div class="note-info">
     <span><span style="color: ${
       note.color
-    }; font-weight: bolder;">Tags: </span>${note.tags.join(', ')}</span>
+    }; font-weight: bolder;">Tags: </span>${note.tags}</span>
       <div>
         <button class="btn pin-btn">${note.pinned ? 'Unpin' : 'Pin'}</button>
         <button class="btn delete-btn">Delete</button>
@@ -126,9 +126,7 @@ const filterNotes = (searchPhrase) => {
     (note) =>
       note.title.toLowerCase().includes(searchPhrase.toLowerCase()) ||
       note.content.toLowerCase().includes(searchPhrase.toLowerCase()) ||
-      note.tags.some((tag) =>
-        tag.toLowerCase().includes(searchPhrase.toLowerCase())
-      )
+      note.tags.toLowerCase().includes(searchPhrase.toLowerCase())
   );
 
   displayNotes(filteredNotes);

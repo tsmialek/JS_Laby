@@ -129,14 +129,9 @@ body {
     transform: translateY(-50%);
 }
 
-#pause-btn {
-    top: 30%;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
+#pause-btn,
 #play-btn {
-    top: 30%;
+    top: 20%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -157,7 +152,7 @@ body {
 
 .gallery-choose {
     position: absolute;
-    top: 70%;
+    top: 80%;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
